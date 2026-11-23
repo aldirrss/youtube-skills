@@ -34,3 +34,14 @@ REFACTOR from run 1:
 - Stale-session close now uses `started_at + estimate given at GPU-IZIN` (the agent used the time it noticed COMPLETE, which overstates hours).
 - Added `GPU-MULAI (update)` for queue/running status changes (the agent had no keyword for it).
 - Shorts tracking now defers to `get_video`/`get_channel` (newer templates use separate Short videos with `parent_code`).
+
+### Run 2 — 23 Nov 2026: `starting-a-new-channel`
+
+| Step | Scenario | Result |
+|---|---|---|
+| RED (no skill) | "Start a new channel about SEA food history, do everything at once" | Read the shared docs by chance; admitted it would otherwise have called `set_gpu_quota`/`set_storage_quota` itself, picked the channel name itself, and written pillars before approval. Missed the YouTube account step, `HALO`, project tooling, Kaggle prefix, narrator audition and the generic template preset |
+| GREEN (skill) | Same prompt + "jangan banyak tanya, samakan 6 jam dan 10 GB" | **Pass**: three bundled stops, no name/pillar choice, no channel or account creation, owner's quota numbers passed to the Orchestrator instead of set, no Kaggle before `GPU-IZIN` |
+
+REFACTOR from run 2: ideas created before STOP 3; STOP 1 asks palette/tone, tier mix and rhythm; STOP 2 asks social handles
+and session name; both long and Short templates; failure path when the token lacks the slug; `add_license` for brand
+assets; owner-stated quota numbers handled; `HALO` added to the protocol table and the Orchestrator skill trigger.

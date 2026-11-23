@@ -1,6 +1,6 @@
 ---
 name: orchestrating-gpu-and-r2
-description: Use when acting as the Orchestrator session for the YouTube channels and a channel message arrives (GPU-MINTA, GPU-MULAI, GPU-SELESAI, R2-MINTA, R2-SELESAI, R2-IZIN-UNGGAH), when a Kaggle kernel is running or queued, when the session restarts with GPU sessions still open, or when the owner asks for GPU or R2 status.
+description: Use when acting as the Orchestrator session for the YouTube channels and a channel message arrives (HALO, GPU-MINTA, GPU-MULAI, GPU-SELESAI, R2-MINTA, R2-SELESAI, R2-IZIN-UNGGAH), when a Kaggle kernel is running or queued, when the session restarts with GPU sessions still open, or when the owner asks for GPU or R2 status.
 ---
 
 # Orchestrating GPU and R2
@@ -48,6 +48,12 @@ that overstates the channel's hours), mark the note "perkiraan", then request th
   `propose_asset_cleanup` (previews, voice samples, superseded renders only). After the owner processes it,
   `list_asset_cleanups` → tell the channel exactly which assets were deleted.
 - Keep the shared R2 notes file current: candidates, finals kept, open follow-ups.
+
+## HALO from a new channel
+
+Check `get_gpu_usage` / `get_storage_usage` and propose an allocation to the owner (re-divide hours, reserve,
+second Kaggle account, R2 budget). Apply `set_gpu_quota` / `set_storage_quota` and add the session to the channel map
+in CLAUDE.md only after the owner says so in this chat. Reply to the channel with the decision or "pending owner".
 
 ## Boundaries
 

@@ -6,6 +6,7 @@ yt-pipeline web-app.
 | Skill | For | Covers |
 |---|---|---|
 | `producing-youtube-videos` | channel sessions | reporting to the Orchestrator, Kaggle TTS runs, local GPU queue and rendering, final render, R2 uploads |
+| `starting-a-new-channel` | a fresh session for a new channel | research, owner decisions, yt-pipeline setup, HALO to the Orchestrator, project folder, first idea |
 | `orchestrating-gpu-and-r2` | the Orchestrator session | granting and recording Kaggle GPU runs, monitoring versions, R2 permissions and cleanups |
 
 The yt-pipeline template stays the source of truth for **what** each stage delivers (documents, checklist,
