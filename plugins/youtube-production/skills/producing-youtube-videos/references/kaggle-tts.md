@@ -11,6 +11,12 @@ One Kaggle account (`utama` in yt-pipeline), 30 GPU hours per week, reset Saturd
 4. Push with the channel's push script if it has one (it refuses to push while another kernel is active), otherwise
    `kaggle kernels push -p <kernel-folder> --accelerator NvidiaTeslaT4`.
 
+Kaggle allows **at most 2 batch GPU sessions per account, and QUEUED versions count**. A third push is rejected with
+"Maximum batch GPU session count of 2 reached". The Orchestrator assigns the two slots; a conditional `GPU-IZIN`
+("push when a slot frees") means: check both slots per version, push only when one is free and you are next in line,
+then send `GPU-MULAI`. A `GPU-IZIN` covers the request it answered (codes, audio seconds). Changed scripts or a
+different batch need a new `GPU-MINTA`.
+
 `NvidiaTeslaT4` means **T4 x2** (Kaggle CLI 2.2.5 help text). The notebook can use GPU 1 for TTS and GPU 2 for Whisper QC.
 
 ## Watching a run
@@ -19,7 +25,8 @@ One Kaggle account (`utama` in yt-pipeline), 30 GPU hours per week, reset Saturd
   Plain `<owner>/<slug>` reports only the **newest** version — an older queued version can start running unseen.
 - QUEUED for a long time is normal (observed 0 min to almost 4 h). Quota is not consumed while queued.
   **Never push again to "unstick" it**: the old version stays in the queue and runs later, doubling the cost.
-  Report the wait to the Orchestrator; only the owner cancels or re-pushes.
+  Report the wait to the Orchestrator. If the global queue is stuck for hours, the **owner** may cancel the stuck
+  version in the Kaggle web-app and approve one re-push; the cancelled version is recorded as 0 minutes.
 - Never open the notebook in the Kaggle web editor during a run — an interactive session also reserves GPU quota.
 - Output of a finished version: `kaggle kernels output <owner>/<slug>/<version> -p <folder>`.
 
@@ -36,12 +43,14 @@ Measured: 287 s audio → 45 min; 532 s → 66 min; 170 s of dialogue → 24 min
 
 ## Keeping runs cheap
 
-- One run per video: long + all Shorts in one config.
+- One run per video: long + all Shorts in one config. Shorts are synthesised once, as their long cut (60–75 s,
+  Zeva up to 90 s); the short cut is edited from those clips. Estimate with the long-cut seconds.
 - Re-runs only for clips that truly failed, via the config's `"hanya": [...]` list.
 - Max 3 attempts per utterance (2 for channels without a pitch gate).
 - On Kaggle keep QC cheap (last word present, tail not cut, pitch gate). Full Whisper QC runs locally on the laptop GPU.
-- Whisper spelling differences are **not** failures. Small pitch drift (≤ ±2.5 semitones) is fixed locally with
-  rubberband, not by another GPU run.
+- Whisper spelling differences are **not** failures.
+- Never pitch-shift (rubberband) a clip before the owner has listened to the original. Deliver it as generated, say
+  which clips drift; shift only the clips the owner names. A suspected drift is not a reason for another GPU run either.
 - Owner-approved acting (shouted or surprised lines with higher pitch) is not a failure either.
 
 ## After the run

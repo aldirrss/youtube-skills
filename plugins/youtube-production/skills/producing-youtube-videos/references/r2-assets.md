@@ -36,3 +36,8 @@ calls `propose_asset_cleanup`. Never propose a cleanup yourself (it creates dupl
 
 `<CODE>_<kind>[-<variant>]_<version>.<ext>`, for example `SI-0005_long_16x9_v1.mp4`, `AC-0002_short-03.mp4`,
 `LS-0002_pratinjau-v1_ringan.mp4`, `KT-0001_contoh-suara_long-dialog.mp3`. The `short-NN` part is mandatory for Shorts.
+
+## Short cuts
+
+Each Short has two final files: the short cut (`<CODE>_short-NN.mp4`, `kind: "short"`) and the long cut
+(`<CODE>_short-NN_panjang.mp4`, `kind: "lain"`). Count both in `R2-MINTA`. See `final-render.md` for why the kinds differ.

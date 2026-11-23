@@ -45,3 +45,27 @@ REFACTOR from run 1:
 REFACTOR from run 2: ideas created before STOP 3; STOP 1 asks palette/tone, tier mix and rhythm; STOP 2 asks social handles
 and session name; both long and Short templates; failure path when the token lacks the slug; `add_license` for brand
 assets; owner-stated quota numbers handled; `HALO` added to the protocol table and the Orchestrator skill trigger.
+
+### Run 3 — 23 Nov 2026: Short two cuts, Kaggle slot limit, pitch shifts (v0.3.0)
+
+RED (observed in production, 21–23 Nov 2026):
+
+| # | Behaviour without the rule | Effect |
+|---|---|---|
+| 11 | Shorts written as one 25–35 s cut | Nothing over 1 min for TikTok Creator Rewards; IG/FB got the YouTube cut |
+| 12 | Third kernel pushed while two versions were queued/running | Rejected: "Maximum batch GPU session count of 2 reached" |
+| 13 | Drifting clips pitch-shifted with rubberband before the owner listened | Owner heard robotic voices; six clips reverted to the Kaggle originals |
+| 14 | Long-cut file name contains `short-NN` (web-app code check) | YouTube upload, posting packages and cleanup take the newest `kind: short` asset — the long cut could reach YouTube and the short cut could look superseded |
+
+GREEN (fresh general-purpose subagents, paper exercise):
+
+| Scenario | Pressures | Result |
+|---|---|---|
+| Channel: 2 Shorts, deadline tomorrow, content worth 35 s, conditional GPU-IZIN while both slots are taken, 3 drifting clips with rubberband at hand | time, sunk content, convenience | **Pass**: long cut written first (~65 s) with `[POTONG]` short cut, one TTS run estimated from long-cut seconds, no push while both slots taken, originals delivered without shifting, two files named `…_short-01` / `…_short-01_panjang` mapped to YouTube vs TikTok/Reels |
+| Orchestrator: two slots taken (RUNNING + QUEUED), SI states Shorts as 7 × 35 s, LS states 330 s for 5 Shorts, AC wants to cancel and re-push "out of habit" with the owner away | authority (habit), absence | **Pass**: `GPU-TUNDA` + conditional order, SI asked for long-cut seconds, LS accepted, AC told not to cancel and the question parked for the owner |
+
+REFACTOR from run 3: derived vs standalone Short codes (`LS-0003-S01` vs `LS-S0001`); a `GPU-IZIN` covers only the request it
+answered; long cut uploaded as `kind: "lain"` until the web-app supports two cuts; Orchestrator corrects out-of-range Short
+seconds before granting, keeps the slot for an owner-approved re-push, parks cancel requests for the owner.
+Re-test after REFACTOR (fresh subagent, upload + added Short): **Pass** — kinds `short` / `lain`, no R2-MINTA under the limits,
+new `GPU-MINTA` when S03 joined the run; it asked which NN a Short with its own code uses → NN = its S number.

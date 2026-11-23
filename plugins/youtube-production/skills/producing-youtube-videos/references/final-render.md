@@ -5,7 +5,7 @@ The template's Final stage lists the deliverables and gate (Izin unggah). This f
 ## Render and loudness
 
 - Render only from segments the owner approved in the Animation stage.
-- Loudness target: **−14 LUFS integrated, −1.5 dBTP true peak** (Shorts −14 LUFS as well). Measure after the final
+- Loudness target: **−14 LUFS integrated, −1.5 dBTP true peak** (both Short cuts −14 LUFS as well). Measure after the final
   encode, not before.
 - Remotion uses its own bundled ffmpeg (CPU libx264). Hardware encode is a separate ffmpeg step afterwards.
 - System `ffmpeg`/`ffprobe` on the laptop is 8.1 (`~/.local/bin`); 6.1 stays at `/usr/bin` as fallback. Call plain
@@ -31,15 +31,36 @@ libx264 and the report says why.
 - Thumbnails: the number the tier requires (usually 3: base, `-b`, `-c`), JPEG 1280×720, < 2 MB, for
   "Test & compare".
 
-## Shorts
+## Shorts: one production, two cuts
 
+Every Short is produced once and rendered as **two cuts** (owner decision, 24 Nov 2026):
+
+| Cut | Length | Goes to | File name |
+|---|---|---|---|
+| short | 30–45 s | YouTube Shorts | `<CODE>_short-NN.mp4` |
+| long | 60–75 s (Zeva Animasi up to 90 s) | TikTok (Creator Rewards counts only videos over 1 min), Instagram/Facebook Reels | `<CODE>_short-NN_panjang.mp4` |
+
+- **Script:** write the long cut; mark the lines dropped for the short cut (e.g. `[POTONG]`). The short cut must make
+  sense on its own, hook included.
+- **Audio:** TTS runs once, for the long cut. The short cut is edited from the same clips — no extra GPU run, no pitch
+  change.
+- **Render:** both cuts vertical 1080×1920, −14 LUFS, same safe area (top 210 px, bottom 380 px, right 140 px).
+  Check both durations are inside their range before asking for Izin unggah.
+- **Publish:** YouTube gets the short cut; TikTok and Meta posting packages use the long cut.
+- **Upload (until the web-app knows two cuts):** the short cut is `kind: "short"`; the long cut is `kind: "lain"`.
+  YouTube upload, posting packages and R2 cleanup take the newest `short` asset of the video, so a long cut uploaded
+  as `short` would go to YouTube and make the short cut look superseded. A revision of either cut uses
+  `replace_asset_id` of that same cut.
+- Exact lengths may follow the content as long as they stay in range. Shorts already past Audio when a template
+  changes are not redone unless the owner asks.
+
+Other Short rules:
 - Count per tier comes from `get_channel` → `tierRules` (it differs per channel).
-- Vertical 1080×1920; keep text inside the safe area (top 210 px, bottom 380 px, right 140 px).
 - How Shorts are tracked depends on the channel's template version: newer templates make each derived Short its
-  own Short video (`create_video` format short with `parent_code`, codes like `LS-S0001`); older ones use `short-NN`
-  variants on the long video. Follow what `get_video` / `get_channel` show — never assume from this file.
-- File names always contain `short-NN` (`<CODE>_short-01.mp4`). Missing Shorts or thumbnails make the Izin unggah
-  request fail.
+  own Short video (`create_video` format short; derived from a long video with `parent_code` → `LS-0003-S01`,
+  standalone → `LS-S0001`); older ones use `short-NN` variants on the long video. Follow what `get_video` / `get_channel` show — never assume from this file.
+- File names always contain `short-NN`; for a Short with its own code, NN is its S number (`AC-0004-S03_short-03.mp4`,
+  `LS-S0007_short-07.mp4`). Missing Shorts or thumbnails make the Izin unggah request fail.
 
 ## Upload
 
