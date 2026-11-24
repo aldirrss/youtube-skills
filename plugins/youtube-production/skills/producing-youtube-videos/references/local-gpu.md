@@ -21,6 +21,26 @@ foreground inside the lock, and check `nvidia-smi` shows no leftover `chrome-hea
 Monitor live load with `gpu-monitor` (add `--log run.csv` to record a benchmark). Do not use the Ubuntu `nvtop`
 package — it crashes on the Intel iGPU.
 
+## Local TTS for English channels: tts-lokal
+
+Owner decision 24 Nov 2026: English narration is synthesised on the laptop with the shared tool `tts-lokal`
+(Chatterbox Turbo, voice cloning; fallback engine Qwen3-TTS). No Kaggle, no `GPU-MINTA`. Read its README first:
+`/mnt/data/Project/youtube/_bersama-youtube/tools/tts-lokal/README.md`.
+
+```bash
+tts-lokal <script>_tts.txt ... --ref <narrator.wav> --ref-teks <narrator.txt> --keluar <dir> --cek   # parse only
+gpu-lock run "AC AC-0004 tts-lokal" -- tts-lokal <script>_tts.txt ... --ref <narrator.wav> --ref-teks <narrator.txt> --keluar <dir>
+```
+
+- Same input files and QC gate as Kaggle (seeds 42/43/44, max 3 attempts, WER, pitch, tail); output `<id>.wav`
+  48 kHz mono, `_qc.csv` with the Kaggle columns, `_laporan-tts-lokal.md`. Re-run failed clips with `--hanya`.
+- ~1.0–1.3 s per second of audio including QC; the whole GPU is busy during the run. Lines over 40 words are split automatically.
+- The Perth watermark is off by default (owner decision); `--watermark` turns it on.
+- The first video per channel is a pilot: clips that still fail (out of memory, repeated QC failure) may go to Kaggle
+  with a normal `GPU-MINTA` for those clips only.
+- After the run, send the Orchestrator `TTS-LOKAL-SELESAI` (fields in `orchestrator-reporting.md`). Nothing is sent before it.
+  Never pitch-shift before the owner has listened.
+
 ## Choosing the Remotion renderer (per video)
 
 | Renderer | Runs on | gpu-lock? | Best for |

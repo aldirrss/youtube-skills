@@ -69,3 +69,9 @@ answered; long cut uploaded as `kind: "lain"` until the web-app supports two cut
 seconds before granting, keeps the slot for an owner-approved re-push, parks cancel requests for the owner.
 Re-test after REFACTOR (fresh subagent, upload + added Short): **Pass** — kinds `short` / `lain`, no R2-MINTA under the limits,
 new `GPU-MINTA` when S03 joined the run; it asked which NN a Short with its own code uses → NN = its S number.
+
+### Run 4 — 24 Nov 2026: local English TTS (v0.4.0)
+
+GREEN (fresh subagent, LS-0003 narration, OOM clips, +2.4 st drift): **Pass** — no GPU-MINTA, `--cek` then `tts-lokal`
+inside `gpu-lock`, OOM clips re-run with `--hanya` then Kaggle only as pilot fallback, no pitch shift, watermark off by default.
+REFACTOR: added the `TTS-LOKAL-SELESAI` keyword (the report had none) and updated the shared protocol, which still said TTS stays on Kaggle.

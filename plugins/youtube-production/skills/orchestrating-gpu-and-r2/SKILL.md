@@ -25,7 +25,8 @@ the technical detail yt-pipeline lacks (cfg, timesteps, attempts, audio seconds)
    condition ("push when a slot frees and you are next"), and require `GPU-MULAI` with the version number.
 2. Check the channel's weekly allowance in `get_gpu_usage`; over allowance or reserve hours → owner decides.
 3. `uji` / `audisi` need the owner's words; a channel may quote them from its own chat.
-4. Image jobs that fit 4 GB belong on the laptop GPU → `GPU-TUNDA` with that reason.
+4. Image jobs that fit 4 GB belong on the laptop GPU → `GPU-TUNDA` with that reason. So does English TTS: AC, LS
+   and new English channels use `tts-lokal`; grant Kaggle only for clips that failed locally (pilot fallback).
 5. Shorts are synthesised once, as their long cut (60–75 s, Zeva Animasi up to 90 s). Estimate from the seconds the
    channel states; if a Short is outside that range, ask for corrected numbers before granting.
 6. Reply `GPU-IZIN` with the numbers you checked and ask for the version number in `GPU-MULAI`.
@@ -44,6 +45,9 @@ the technical detail yt-pipeline lacks (cfg, timesteps, attempts, audio seconds)
   The re-push keeps the cancelled version's slot. A channel asking to cancel on its own gets "no" and the question goes
   to the owner in the Orchestrator chat; the channel waits.
 - Unknown numbers are written as estimates and labelled "perkiraan"; never invent figures.
+
+Local `tts-lokal` runs are not Kaggle sessions: never `log_gpu_session` them. Note the channel's report (code, engine,
+clips, audio seconds, time, failures) in the shared notes so local GPU load stays visible.
 
 ## After a session restart
 

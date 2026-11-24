@@ -18,6 +18,7 @@ working summary. Keywords stay in Indonesian because every session uses them ver
 | `GPU-MINTA` | Before any push | channel, kernel ref, video code, purpose (`produksi`/`ulang`/`uji`/`audisi`), utterances, **target audio seconds**, estimated minutes, the owner's exact words if `uji`/`audisi` |
 | `GPU-MULAI` | Right after a successful push | kernel ref **and version number**, push time UTC, whether it is RUNNING or QUEUED |
 | `GPU-SELESAI` | After COMPLETE / ERROR / cancel | RUNNING and end time UTC, GPU seconds from the kernel log, accelerator, utterances, attempts, audio seconds, failed clips **after local QC** (with reasons), status |
+| `TTS-LOKAL-SELESAI` | After a local `tts-lokal` run (no Kaggle, no `GPU-MINTA` before it) | code, engine, narrator, clips, audio seconds, total time, failed clips after QC (reasons), clips moved to Kaggle if any |
 
 Status changes after the push (still QUEUED after a long wait, QUEUED → RUNNING) are sent as another
 `GPU-MULAI` whose first line ends with `(update)`, with the version and the time of the change.

@@ -37,6 +37,7 @@ Never copy template content into notes or code; read it fresh each time.
 | You are about to… | Read |
 |---|---|
 | send any message to the Orchestrator | `references/orchestrator-reporting.md` |
+| run TTS for an English channel (local `tts-lokal`) | `references/local-gpu.md` |
 | run TTS (or any notebook) on Kaggle | `references/kaggle-tts.md` |
 | render, encode, transcribe or generate images on the laptop | `references/local-gpu.md` |
 | make the final render, thumbnails, subtitles, Shorts | `references/final-render.md` |

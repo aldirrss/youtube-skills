@@ -1,6 +1,8 @@
 # Kaggle TTS runs
 
 TTS (VoxCPM2 voice cloning, ~8 GB VRAM) runs on Kaggle because the laptop GPU has 4 GB.
+**English channels (AC, LS, and any new English channel) use `tts-lokal` on the laptop instead** — see
+`local-gpu.md`. Kaggle stays their fallback for single clips that fail locally. Indonesian channels (SI, Zeva) stay on Kaggle.
 One Kaggle account (`utama` in yt-pipeline), 30 GPU hours per week, reset Saturday 00:00 UTC, shared by all channels.
 
 ## Before pushing
