@@ -31,6 +31,13 @@ the technical detail yt-pipeline lacks (cfg, timesteps, attempts, audio seconds)
    channel states; if a Short is outside that range, ask for corrected numbers before granting.
 6. Reply `GPU-IZIN` with the numbers you checked and ask for the version number in `GPU-MULAI`.
 
+## Stuck queue for Indonesian TTS (SI, Zeva)
+
+- A kernel that stays QUEUED for more than 60 minutes counts as a failed attempt (owner decision, 25 Nov 2026).
+- At minute 60, tell the owner (cancel in the Kaggle web UI) and the channel. Re-grant only after re-checking the slots.
+- Keep a count of failed attempts per video in the queue file. After 3, or after 1 when the video airs in under 48 h,
+  the channel may ask the owner for F5 local. The owner's approval is per video; you never grant F5 yourself.
+
 ## Recording a run
 
 - **Open the yt-pipeline session only when that version is RUNNING.** `started_at` cannot be edited later;

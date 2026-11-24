@@ -5,6 +5,25 @@ TTS (VoxCPM2 voice cloning, ~8 GB VRAM) runs on Kaggle because the laptop GPU ha
 `local-gpu.md`. Kaggle stays their fallback for single clips that fail locally. Indonesian channels (SI, Zeva) stay on Kaggle.
 One Kaggle account (`utama` in yt-pipeline), 30 GPU hours per week, reset Saturday 00:00 UTC, shared by all channels.
 
+## Indonesian channels (SI, Zeva): Kaggle first, F5 local as owner-approved fallback
+
+Owner decision, 25 Nov 2026 (`ATURAN-KAGGLE-GPU.md` §4.9, v1.15).
+
+- **Kaggle first.** VoxCPM2 on Kaggle is the main engine, through the usual GPU-MINTA flow.
+- **What counts as a failed attempt:** the kernel ERRORs, or stays QUEUED for more than 60 minutes. Clips that fail QC
+  are not a failed attempt; re-run them with `--hanya`.
+- **You cannot cancel a queued kernel** (the CLI has no cancel command). At minute 60 the Orchestrator tells the owner,
+  and the owner cancels in the Kaggle web UI. Re-push only after a new GPU-IZIN.
+- **After 3 failed attempts** for the same video, ask the owner in your chat to use F5-TTS-INDO-FINETUNE-V2 locally for
+  that video, with a listening sample. Use F5 only after the owner agrees, and quote their words in the report.
+- **Shortcut:** if the video airs in under 48 hours, you may ask after 1 failed attempt.
+- **Running F5:**
+  - path `/mnt/data/Project/ai/F5-TTS-INDO-FINETUNE-V2`, inside `gpu-lock`, with `--model F5TTS_v1_Base`;
+  - 1–3 sentences per clip; numbers and acronyms written phonetically;
+  - same QC as Kaggle, no pitch shift;
+  - report with `TTS-LOKAL-SELESAI`;
+  - its licence is not listed in the credits (owner decision).
+
 ## Before pushing
 
 1. Text normalised for TTS (numbers to words, pronunciation dictionary) — channel tooling.
