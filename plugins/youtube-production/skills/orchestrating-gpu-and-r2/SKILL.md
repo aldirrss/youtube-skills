@@ -53,8 +53,8 @@ that overstates the channel's hours), mark the note "perkiraan", then request th
 
 ## R2
 
-- Short long cuts (`…_short-NN_panjang…`) are uploaded as `kind: "lain"`, so they never appear as cleanup candidates
-  of the short cut; never propose a channel's only long cut for cleanup.
+- Short cuts are versioned separately (`short` vs `short_panjang`): only an older version of the **same** cut is a
+  cleanup candidate; never propose a channel's only long cut. Older long cuts stored as `kind: "lain"` are kept.
 - `R2-MINTA`: check `get_storage_usage` for the channel and the total budget → `R2-IZIN` (state a size ceiling)
   or `R2-TUNDA`. Replacements via `replace_asset_id` are net ±0.
 - `R2-IZIN-UNGGAH`: verify the gate with `get_gate_status`, `list_assets` for the code, then

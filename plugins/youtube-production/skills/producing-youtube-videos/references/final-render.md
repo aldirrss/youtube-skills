@@ -47,10 +47,11 @@ Every Short is produced once and rendered as **two cuts** (owner decision, 24 No
 - **Render:** both cuts vertical 1080×1920, −14 LUFS, same safe area (top 210 px, bottom 380 px, right 140 px).
   Check both durations are inside their range before asking for Izin unggah.
 - **Publish:** YouTube gets the short cut; TikTok and Meta posting packages use the long cut.
-- **Upload (until the web-app knows two cuts):** the short cut is `kind: "short"`; the long cut is `kind: "lain"`.
-  YouTube upload, posting packages and R2 cleanup take the newest `short` asset of the video, so a long cut uploaded
-  as `short` would go to YouTube and make the short cut look superseded. A revision of either cut uses
-  `replace_asset_id` of that same cut.
+- **Upload:** the short cut is `kind: "short"`, the long cut is `kind: "short_panjang"`. Only `short` goes to YouTube;
+  posting packages for TikTok/Meta take `short_panjang`, and cleanup versions each cut separately. If your
+  `create_upload` schema does not list `short_panjang`, the session started before the web-app update: restart it
+  (or reconnect `ytpipeline`) instead of falling back to another kind. A revision of either cut uses `replace_asset_id`
+  of that same cut.
 - Exact lengths may follow the content as long as they stay in range. Shorts already past Audio when a template
   changes are not redone unless the owner asks.
 

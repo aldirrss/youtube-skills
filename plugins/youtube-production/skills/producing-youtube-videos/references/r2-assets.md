@@ -40,4 +40,5 @@ calls `propose_asset_cleanup`. Never propose a cleanup yourself (it creates dupl
 ## Short cuts
 
 Each Short has two final files: the short cut (`<CODE>_short-NN.mp4`, `kind: "short"`) and the long cut
-(`<CODE>_short-NN_panjang.mp4`, `kind: "lain"`). Count both in `R2-MINTA`. See `final-render.md` for why the kinds differ.
+(`<CODE>_short-NN_panjang.mp4`, `kind: "short_panjang"`). Count both in `R2-MINTA`. Older long cuts uploaded as
+`kind: "lain"` still work; do not re-upload them.
