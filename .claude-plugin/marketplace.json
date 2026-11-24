@@ -7,14 +7,14 @@
   },
   "metadata": {
     "description": "Skills for channel sessions and the Orchestrator session (Kaggle GPU quota, R2 storage, local GPU, final render)",
-    "version": "0.8.0"
+    "version": "0.8.1"
   },
   "plugins": [
     {
       "name": "youtube-production",
       "source": "./plugins/youtube-production",
       "description": "How to run the technical stages of a yt-pipeline video (audio on Kaggle, animation and final render on the local GPU, R2 uploads) and how the Orchestrator session grants and records GPU and storage use",
-      "version": "0.8.0",
+      "version": "0.8.1",
       "category": "productivity",
       "tags": ["youtube", "yt-pipeline", "kaggle", "remotion", "ffmpeg", "r2"]
     }

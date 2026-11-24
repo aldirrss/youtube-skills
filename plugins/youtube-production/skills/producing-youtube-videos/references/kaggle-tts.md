@@ -22,6 +22,9 @@ Owner decision, 25 Nov 2026 (`ATURAN-KAGGLE-GPU.md` §4.9, v1.15).
   - 1–3 sentences per clip; numbers and acronyms written phonetically;
   - same QC as Kaggle, no pitch shift;
   - report with `TTS-LOKAL-SELESAI`;
+  - **F5 writes 24 kHz audio:** resample to 48 kHz (`aresample=48000`) before `master_vo.py`. Otherwise the aexciter
+    filter sits above Nyquist and the narration becomes noise or beeps (ZV-0001, 24 Nov). `tts-lokal` and VoxCPM2
+    already output 48 kHz;
   - its licence is not listed in the credits (owner decision).
 
 ## Before pushing
