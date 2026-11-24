@@ -1,6 +1,6 @@
 ---
 name: producing-youtube-videos
-description: Use when a channel session works on a yt-pipeline video (long or Short) at any stage, especially Audio/TTS on Kaggle, Animation or Final render, uploading files to R2, or using the laptop GPU; also when a kernel is QUEUED, a gate is rejected, or the Orchestrator is unreachable.
+description: Use when a channel session works on a yt-pipeline video (long or Short) at any stage, especially Audio/TTS on Kaggle, Animation or Final render, uploading files to R2, or using the laptop GPU; when writing a hook, designing thumbnails, scheduling Shorts or reviewing D+2/D+7 analytics; also when a kernel is QUEUED, a gate is rejected, or the Orchestrator is unreachable.
 ---
 
 # Producing YouTube Videos (channel sessions)
@@ -8,7 +8,7 @@ description: Use when a channel session works on a yt-pipeline video (long or Sh
 ## Overview
 
 The yt-pipeline **template** says WHAT each stage delivers (documents, checklist, required tools, gate).
-This skill says HOW to do the shared technical parts so four channels stop repeating the same mistakes.
+This skill says HOW to do the shared technical parts so the channels stop repeating the same mistakes.
 Never copy template content into notes or code; read it fresh each time.
 
 ## Start of every stage
@@ -31,6 +31,9 @@ Never copy template content into notes or code; read it fresh each time.
 | Every Short has two cuts: 30–45 s for YouTube, 60–75 s (Zeva ≤ 90 s) for TikTok/Reels, one TTS run | TikTok pays only for videos over 1 min; YouTube Shorts perform best short |
 | No pitch shift before the owner has listened to the original clip | Shifted clips sounded robotic to the owner; six were reverted to the Kaggle originals |
 | Uji / audisi runs need the owner's words in your chat; quote them in `GPU-MINTA` | Tests are the owner's decision, not the channel's |
+| One Short every day; on a long's day its first Short goes out after the long is public, "Related video" = that long | Only 3 % of long views came from Shorts; `emptyDays` does not flag long days without a Short |
+| Short hook: strongest image at frame 0, open question unanswered in 0–3 s, 3 variants for the owner | 4 in 10 viewers swiped away |
+| Three different thumbnail concepts, ≤ 4 words, readable at 168×94, compared with the top 3 competitors at Izin unggah | Long CTR was 2.8 %; 87 % of long views come from recommendations and browse |
 
 ## Which reference to read
 
@@ -41,6 +44,7 @@ Never copy template content into notes or code; read it fresh each time.
 | run TTS (or any notebook) on Kaggle | `references/kaggle-tts.md` |
 | render, encode, transcribe or generate images on the laptop | `references/local-gpu.md` |
 | make the final render, thumbnails, subtitles, Shorts | `references/final-render.md` |
+| write a hook (Short or long), design thumbnails, schedule Shorts, or evaluate D+2/D+7 | `references/hooks-thumbnails-schedule.md` |
 | upload, replace or clean up files in R2 | `references/r2-assets.md` |
 
 ## Red flags — stop and re-read the hard rules
@@ -52,6 +56,10 @@ Never copy template content into notes or code; read it fresh each time.
 - "This Short is only 35 s of content, one cut is enough." → write the 60–75 s long cut; the short cut comes from it.
 - "It's a small render, no need for gpu-lock." → every NVIDIA job uses the lock.
 - "I'll upload v2 as a new asset to keep v1 for comparison." → replace; say in `R2-SELESAI` if the owner wants v1 kept.
+- "`emptyDays` is empty, so every day has a Short." → check each long day; the long hides the gap.
+- "The Short answers everything, it's more satisfying." → leave one question for the long and name it at the end.
+- "Thumbnail B is A in another colour." → three different ideas, or it is one thumbnail.
+- "The schedule is already approved, I'll just move the Shorts to fill the long day." → report it; the owner decides.
 - "The template says log_gpu_session is required." → outdated template text; the Orchestrator logs. Report it.
 
 ## Common mistakes

@@ -75,3 +75,27 @@ new `GPU-MINTA` when S03 joined the run; it asked which NN a Short with its own 
 GREEN (fresh subagent, LS-0003 narration, OOM clips, +2.4 st drift): **Pass** — no GPU-MINTA, `--cek` then `tts-lokal`
 inside `gpu-lock`, OOM clips re-run with `--hanya` then Kaggle only as pilot fallback, no pitch shift, watermark off by default.
 REFACTOR: added the `TTS-LOKAL-SELESAI` keyword (the report had none) and updated the shared protocol, which still said TTS stays on Kaggle.
+
+### Run 5 — 24 Nov 2026: hooks, thumbnails, daily Shorts (v0.5.0)
+
+RED (observed in production and analytics, 23–24 Nov 2026):
+
+| # | Behaviour without the rule | Effect |
+|---|---|---|
+| 15 | Derived Shorts scheduled from the day after their long | Long days had no Short (AC, LS, SI); `get_schedule` showed `emptyDays = []` because the long counts |
+| 16 | Thumbnails A/B/C were variants of one layout | SI long CTR 2.8 % on 5.9 k impressions |
+| 17 | Shorts did not point viewers to the long | 7.9 k Short views, only 3 % of long views from related Shorts |
+| 18 | Older channel rules kept a logo intro after the hook and a logo in the thumbnail's bottom-right corner | Conflicts with the new hook and thumbnail rules |
+| 19 | `create_upload` schema in one session lacked `short_panjang` after a restart | Old skill text forbade any fallback, so the long cut could not be uploaded |
+
+GREEN (fresh general-purpose subagent, paper exercise): AC-0004 script with greeting + subscribe + IntroLogo at 0:05,
+a Short with a logo sting that answers everything by 4 s, A/B/C colour swaps with a 6-word title and a bottom-right logo,
+a long day without a Short plus temptation to move approved Shorts, D+2 CTR 3.1 % / 30 s retention 64 % / Short 55 %,
+missing `short_panjang`. **Pass** on all six: hooks rewritten, 3 variants per Short, three new concepts, conflicts
+reported instead of decided, approved schedule left alone with the gap reported, proposals instead of live changes,
+reconnect before the `lain` fallback.
+
+REFACTOR from run 5: the full Indonesian rule wins over the summary; shifting Shorts only moves the hole; the owner
+picks one of the 3 hooks; the Short answer comes in its second half; Short metrics at D+2; failed patterns go in the
+evaluasi document and weekly report; live thumbnail/title changes are the owner's; while a rule conflict is open the
+draft follows the new rule; "four channels" wording removed.

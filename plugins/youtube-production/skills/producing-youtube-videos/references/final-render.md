@@ -29,7 +29,8 @@ libx264 and the report says why.
   no black frames, no cut tails.
 - Subtitle `.srt` generated from the script and timeline, not from Whisper.
 - Thumbnails: the number the tier requires (usually 3: base, `-b`, `-c`), JPEG 1280×720, < 2 MB, for
-  "Test & compare".
+  "Test & compare". Three different concepts with a competitor contact sheet attached to Izin unggah — see
+  `hooks-thumbnails-schedule.md`.
 
 ## Shorts: one production, two cuts
 
@@ -49,8 +50,9 @@ Every Short is produced once and rendered as **two cuts** (owner decision, 24 No
 - **Publish:** YouTube gets the short cut; TikTok and Meta posting packages use the long cut.
 - **Upload:** the short cut is `kind: "short"`, the long cut is `kind: "short_panjang"`. Only `short` goes to YouTube;
   posting packages for TikTok/Meta take `short_panjang`, and cleanup versions each cut separately. If your
-  `create_upload` schema does not list `short_panjang`, the session started before the web-app update: restart it
-  (or reconnect `ytpipeline`) instead of falling back to another kind. A revision of either cut uses `replace_asset_id`
+  `create_upload` schema does not list `short_panjang`, the session holds an old copy of the tool list: reconnect
+  `ytpipeline` (or restart the session) and reload the schema. Only if it is still missing, upload as `kind: "lain"`
+  with the `_panjang` file name (the web-app still routes it to TikTok/Meta) and say so in `R2-SELESAI`. A revision of either cut uses `replace_asset_id`
   of that same cut.
 - Exact lengths may follow the content as long as they stay in range. Shorts already past Audio when a template
   changes are not redone unless the owner asks.

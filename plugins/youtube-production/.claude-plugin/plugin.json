@@ -1,7 +1,7 @@
 {
   "name": "youtube-production",
   "displayName": "YouTube Production",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Shared know-how for yt-pipeline channel sessions and the Orchestrator session: reporting GPU and R2 use, Kaggle TTS runs, local GPU queueing and rendering, final render and asset uploads.",
   "author": {
     "name": "youtube-skills maintainers"
