@@ -116,3 +116,17 @@ REFACTOR from run 6: failed ideas may be scored but not submitted; explicit owne
 definitions of small/mid channels, high views and the outlier ratio; market per channel; signal 2 needs ≥ 2 sidebars;
 all 3 packaging concepts required; S4 "planned" defined; standalone Short score mapping; the long idea's Shorts line;
 reuse keyed to the main keyword; check `idea_tools` first.
+
+### Run 7 — 25 Nov 2026: Riset stage reads reports and analytics (v0.7.0)
+
+RED (owner report): research went straight to web sources without reading the channel's reports, past evaluations or
+analytics, so known weak segments (e.g. SI-0005's long geology data section at minute 3) could repeat.
+
+GREEN (fresh subagent, paper exercise, SI-0007 in Riset with a next-day deadline, 2 laporan, an SI-0005 evaluasi,
+SI-0006 public for 20 h, a standalone and a derived Short): **Pass** — reports, evaluations, analytics and tier
+performance read before WebSearch despite the deadline; lessons written to `sumber`; SI-0006 via `liveViews` marked
+"sementara"; standalone Short covered, derived Short not; analytics never replaces a second source.
+
+REFACTOR from run 7: use the tools before the template lists them (reported in `tools_used`); "similar videos" for a
+standalone Short; under-2-day figures never used as evidence; append to `sumber` with `base_revision`; owner-only
+exception; heading clarifies "before requesting G3".

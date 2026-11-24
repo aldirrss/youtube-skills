@@ -94,3 +94,40 @@ Putusan: lolos / tunda / ubah sudut — one-sentence reason
 - At D+2/D+7, compare the result with the reading. For example, "strong outliers but our CTR 2 %" means the packaging
   lost, not the topic.
 - The weekly report names the signal that missed most often that week.
+
+## Research stage (Riset, before requesting gate G3): read reports and analytics first
+
+Owner decision, 25 Nov 2026. It applies to long videos and standalone Shorts. Derived Shorts start at Naskah, so they
+are not covered.
+
+**Before looking for sources:**
+1. **Channel reports.** `list_channel_documents` (kind `laporan`) → `get_document` on the 2 latest.
+2. **Evaluations of similar videos.** The `evaluasi` documents of up to 3 of our closest videos (same pillar or topic):
+   `get_document` with `code` + kind `evaluasi`.
+3. **Analytics.** `get_analytics` for the last 28 days: retention, CTR and traffic sources of similar videos.
+   - Use `liveViews` for videos public under 2 days.
+   - For a long video, also run `get_tier_performance` for the proposed tier.
+
+**Write it down** in the `sumber` document, in a section "Pelajaran dari laporan & analitik" of at most about 10 lines:
+- the findings used, with their numbers;
+- how they change the research: which claims to dig into, what to cut, which viewer questions must be answered;
+- which reports, evaluations and analytics period were read.
+
+**No data yet** (new channel): write "belum ada laporan/analitik" and use the idea's algorithm reading as the comparison.
+
+**Details:**
+- **Standalone Short:** "similar videos" means our Shorts on the same topic plus the long it bridges to. No
+  `get_tier_performance`.
+- **Videos under 2 days old:** use `get_analytics` → `videos[].liveViews` with `refresh_live: true`. Record the figure as
+  "sementara", never as evidence.
+- **Writing to `sumber`:** `get_document` first, add this section, then `put_document` with `base_revision`. Never wipe
+  existing content.
+- **Tools:** until your template lists these tools, use them anyway and report them honestly in `tools_used` (owner
+  decision, 25 Nov 2026). Propose the template change at the same time.
+- **Exception:** skip this step only on the owner's explicit words, and quote them in the section.
+
+**Limits:**
+- Analytics sets the research's **priorities and angle**, not the truth of facts. Every number, date and name still
+  needs ≥ 2 sources or a [PERLU CEK] tag.
+- Never invent analytics numbers. Mark figures under 2 days old as "sementara".
+- Record key numbers only; never paste reports or tool output into the document.

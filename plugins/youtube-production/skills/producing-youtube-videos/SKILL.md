@@ -1,6 +1,6 @@
 ---
 name: producing-youtube-videos
-description: Use when a channel session works on a yt-pipeline video (long or Short) at any stage, especially Audio/TTS on Kaggle, Animation or Final render, uploading files to R2, or using the laptop GPU; when researching or scoring an idea, writing a hook, designing thumbnails, scheduling Shorts or reviewing D+2/D+7 analytics; also when a kernel is QUEUED, a gate is rejected, or the Orchestrator is unreachable.
+description: Use when a channel session works on a yt-pipeline video (long or Short) at any stage, especially Audio/TTS on Kaggle, Animation or Final render, uploading files to R2, or using the laptop GPU; when researching or scoring an idea or working the Riset stage, writing a hook, designing thumbnails, scheduling Shorts or reviewing D+2/D+7 analytics; also when a kernel is QUEUED, a gate is rejected, or the Orchestrator is unreachable.
 ---
 
 # Producing YouTube Videos (channel sessions)
@@ -35,6 +35,7 @@ Never copy template content into notes or code; read it fresh each time.
 | Short hook: strongest image at frame 0, open question unanswered in 0–3 s, 3 variants for the owner | 4 in 10 viewers swiped away |
 | Three different thumbnail concepts, ≤ 4 words, readable at 168×94, compared with the top 3 competitors at Izin unggah | Long CTR was 2.8 %; 87 % of long views come from recommendations and browse |
 | Every `score_idea` carries a "Pembacaan algoritma" section; an idea goes to the Proposal gate only if outliers, packaging and our audience pass (Shorts: feed, frame 0, bridge), unless the owner explicitly asks | Search demand alone does not show what the recommendation system pushes |
+| Riset stage starts by reading the latest reports, similar videos' evaluations and analytics, and records the lessons in the `sumber` document | Research that ignores what our viewers did repeats the same weak segments |
 
 ## Which reference to read
 
@@ -46,7 +47,7 @@ Never copy template content into notes or code; read it fresh each time.
 | render, encode, transcribe or generate images on the laptop | `references/local-gpu.md` |
 | make the final render, thumbnails, subtitles, Shorts | `references/final-render.md` |
 | write a hook (Short or long), design thumbnails, schedule Shorts, or evaluate D+2/D+7 | `references/hooks-thumbnails-schedule.md` |
-| research or score an idea (long or Short) | `references/idea-algorithm-reading.md` |
+| research or score an idea (long or Short), or work the Riset stage | `references/idea-algorithm-reading.md` |
 | upload, replace or clean up files in R2 | `references/r2-assets.md` |
 
 ## Red flags — stop and re-read the hard rules
