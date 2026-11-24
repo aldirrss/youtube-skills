@@ -64,6 +64,11 @@ title and the first 30 s decide growth.
 | Weekly | `write_report` | — | Three best and three worst hooks with their patterns |
 
 - Short metrics are read at D+2 after the Short goes public, like the long.
+- Videos public for < 2 days: judge them only by `get_analytics` → `videos[].liveViews` (total since publish; pass
+  `refresh_live: true`), never by `videos[].views` or the daily chart, which lag ±2 days. CTR, % watched and watch time
+  come only from the Analytics figures at D+2/D+7. Never compare `liveViews` with period `views` in one table.
+- Where notes go: one video → its `evaluasi` document (`put_document kind=evaluasi`); conclusions across videos →
+  `write_report`. The `riset` document is for pre-production research only.
 - Failed hook patterns go in the video's evaluasi document and in the weekly report; read the last report before
   writing new hooks.
 - A new thumbnail or title for a published video is a proposal to the owner in your chat; the owner applies it in
