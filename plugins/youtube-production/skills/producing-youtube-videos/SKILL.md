@@ -1,6 +1,6 @@
 ---
 name: producing-youtube-videos
-description: Use when a channel session works on a yt-pipeline video (long or Short) at any stage, especially Audio/TTS on Kaggle, Animation or Final render, uploading files to R2, or using the laptop GPU; when writing a hook, designing thumbnails, scheduling Shorts or reviewing D+2/D+7 analytics; also when a kernel is QUEUED, a gate is rejected, or the Orchestrator is unreachable.
+description: Use when a channel session works on a yt-pipeline video (long or Short) at any stage, especially Audio/TTS on Kaggle, Animation or Final render, uploading files to R2, or using the laptop GPU; when researching or scoring an idea, writing a hook, designing thumbnails, scheduling Shorts or reviewing D+2/D+7 analytics; also when a kernel is QUEUED, a gate is rejected, or the Orchestrator is unreachable.
 ---
 
 # Producing YouTube Videos (channel sessions)
@@ -34,6 +34,7 @@ Never copy template content into notes or code; read it fresh each time.
 | One Short every day; on a long's day its first Short goes out after the long is public, "Related video" = that long | Only 3 % of long views came from Shorts; `emptyDays` does not flag long days without a Short |
 | Short hook: strongest image at frame 0, open question unanswered in 0–3 s, 3 variants for the owner | 4 in 10 viewers swiped away |
 | Three different thumbnail concepts, ≤ 4 words, readable at 168×94, compared with the top 3 competitors at Izin unggah | Long CTR was 2.8 %; 87 % of long views come from recommendations and browse |
+| Every `score_idea` carries a "Pembacaan algoritma" section; an idea goes to the Proposal gate only if outliers, packaging and our audience pass (Shorts: feed, frame 0, bridge), unless the owner explicitly asks | Search demand alone does not show what the recommendation system pushes |
 
 ## Which reference to read
 
@@ -45,6 +46,7 @@ Never copy template content into notes or code; read it fresh each time.
 | render, encode, transcribe or generate images on the laptop | `references/local-gpu.md` |
 | make the final render, thumbnails, subtitles, Shorts | `references/final-render.md` |
 | write a hook (Short or long), design thumbnails, schedule Shorts, or evaluate D+2/D+7 | `references/hooks-thumbnails-schedule.md` |
+| research or score an idea (long or Short) | `references/idea-algorithm-reading.md` |
 | upload, replace or clean up files in R2 | `references/r2-assets.md` |
 
 ## Red flags — stop and re-read the hard rules
@@ -56,6 +58,8 @@ Never copy template content into notes or code; read it fresh each time.
 - "This Short is only 35 s of content, one cut is enough." → write the 60–75 s long cut; the short cut comes from it.
 - "It's a small render, no need for gpu-lock." → every NVIDIA job uses the lock.
 - "I'll upload v2 as a new asset to keep v1 for comparison." → replace; say in `R2-SELESAI` if the owner wants v1 kept.
+- "The keyword score is high, that's enough research." → read outliers, the related sidebar and our own traffic first.
+- "No outlier found, but I like the topic." → permintaan ≤ 4; defer it or change the angle.
 - "`emptyDays` is empty, so every day has a Short." → check each long day; the long hides the gap.
 - "The Short answers everything, it's more satisfying." → leave one question for the long and name it at the end.
 - "Thumbnail B is A in another colour." → three different ideas, or it is one thumbnail.

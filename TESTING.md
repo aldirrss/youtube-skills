@@ -99,3 +99,20 @@ REFACTOR from run 5: the full Indonesian rule wins over the summary; shifting Sh
 picks one of the 3 hooks; the Short answer comes in its second half; Short metrics at D+2; failed patterns go in the
 evaluasi document and weekly report; live thumbnail/title changes are the owner's; while a rule conflict is open the
 draft follows the new rule; "four channels" wording removed.
+
+### Run 6 — 24 Nov 2026: algorithm reading during idea research (v0.6.0)
+
+RED (production): ideas were scored from autocomplete and `yt_analyze_keyword` alone (search demand). Nothing checked
+outliers, the related sidebar or the channel's own traffic, while 87 % of SI long views came from recommendations and
+browse and long CTR was 2.8 %.
+
+GREEN (fresh general-purpose subagent, paper exercise, LS): idea A with a 72/100 keyword score and no outlier check plus
+the owner saying "just push it through"; idea B with two outliers (4.1×, 6.3×), 7 sidebar neighbours and a matching
+own-channel video but one packaging concept; standalone Short C with a strong niche feed but no long to bridge to.
+**Pass**: A not scored at 8 (cap ≤ 4 without outliers), remaining reads listed, owner answered without inflating scores;
+B completes two more concepts and the missing reads before Proposal; C held on S4 and suggested as a derived Short of A.
+
+REFACTOR from run 6: failed ideas may be scored but not submitted; explicit owner exception with the failed signal named;
+definitions of small/mid channels, high views and the outlier ratio; market per channel; signal 2 needs ≥ 2 sidebars;
+all 3 packaging concepts required; S4 "planned" defined; standalone Short score mapping; the long idea's Shorts line;
+reuse keyed to the main keyword; check `idea_tools` first.
