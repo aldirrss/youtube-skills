@@ -32,7 +32,7 @@ Definitions:
 | 3 | Saturation | `yt_analyze_keyword` (share of small channels, of videos < 12 months) | Not only giant channels with old videos, or a clear new angle |
 | 4 | Packaging | Write all 3 title + thumbnail concepts (`hooks-thumbnails-schedule.md`) | All 3 written, and one has one focal point, ≤ 4 words, title ≤ 60 chars, a true promise |
 | 5 | Retention | Short outline: 0–3 s promise, open question, payoff, competitor durations | A question that stays open until near the end; duration fits the tier proposed for the idea |
-| 6 | Our audience | `get_analytics` on our own channel (top browse/suggested videos, CTR, retention) | Close to our videos the algorithm already pushed, or a stated reason to widen the pillar |
+| 6 | Our audience | `get_analytics` on our own channel (top `traffic` RELATED_VIDEO/BROWSE, `avgViewSeconds`, % watched; CTR only if the owner supplied Studio figures) | Close to our videos the algorithm already pushed, or a stated reason to widen the pillar |
 
 Also record, without a pass mark:
 - timing — `yt_trending` and any news trigger, with the time window;
@@ -104,7 +104,9 @@ are not covered.
 1. **Channel reports.** `list_channel_documents` (kind `laporan`) → `get_document` on the 2 latest.
 2. **Evaluations of similar videos.** The `evaluasi` documents of up to 3 of our closest videos (same pillar or topic):
    `get_document` with `code` + kind `evaluasi`.
-3. **Analytics.** `get_analytics` for the last 28 days: retention, CTR and traffic sources of similar videos.
+3. **Analytics.** `get_analytics` for the last 28 days: % watched, `avgViewSeconds` and `traffic` (with `code`, that
+   video's traffic) of similar videos. CTR is not available through yt-pipeline; use it only if the owner supplied
+   Studio figures.
    - Use `liveViews` for videos public under 2 days.
    - For a long video, also run `get_tier_performance` for the proposed tier.
 
