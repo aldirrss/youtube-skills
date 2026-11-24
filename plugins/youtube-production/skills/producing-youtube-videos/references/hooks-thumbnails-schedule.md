@@ -74,6 +74,17 @@ title and the first 30 s decide growth.
   - for CTR: the BROWSE + RELATED_VIDEO share of `traffic` and views/day vs the channel median;
   - for 30 s retention: `avgViewSeconds` and % watched.
   Never invent CTR or retention figures. Do not mix `traffic` (lags ±2 days) with `live` figures.
+- **Targets** (yt-pipeline release 20261124-185556): `get_targets`, `get_analytics` → `channelTarget`, and with `code`
+  → `verdict` (D+7 / D+28).
+  - `targets` or `channelTarget` missing or null means the channel has no targets: **no verdict at all**. Never write
+    "below target" or "0 % reached".
+  - A `verdict` uses the target in force when it was measured. Never re-judge old videos against a newer target.
+  - Verdicts exist only for videos public ≥ 9 days (D+7) and ≥ 30 days (D+28). An 8-day-old video without one is
+    normal.
+  - Never change targets yourself; use `propose_targets` with an `alasan` that holds the supporting numbers and range.
+    The owner decides.
+  - Shorts have their own targets; never compare a Short's % watched with a long's. CTR cannot be a target.
+  - Use targets in evaluations only after the Orchestrator confirms the owner has filled them in.
 - Where notes go: one video → its `evaluasi` document (`put_document kind=evaluasi`); conclusions across videos →
   `write_report`. The `riset` document is for pre-production research only.
 - Failed hook patterns go in the video's evaluasi document and in the weekly report; read the last report before
