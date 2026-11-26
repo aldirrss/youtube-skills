@@ -1,7 +1,7 @@
 # Hooks, thumbnails and the daily Short schedule
 
 Owner decision, 24 Nov 2026. Full rule (Indonesian), with the data behind it:
-`/mnt/data/Project/youtube/_bersama-youtube/ATURAN-HOOK-THUMBNAIL-JADWAL.md`.
+`manager/ATURAN-HOOK-THUMBNAIL-JADWAL.md` (repo root; `../manager/...` from a channel folder).
 This file is a summary; if it and the full rule disagree, the full rule wins. Your channel's template may hold stricter
 or extra items; read `get_channel` first.
 
@@ -68,7 +68,7 @@ title and the first 30 s decide growth.
   `refresh_live: true`), never by `videos[].views` or the daily chart, which lag ±2 days. CTR, % watched and watch time
   come only from the Analytics figures at D+2/D+7. Never compare `liveViews` with period `views` in one table.
 - `get_analytics` gives `avgViewSeconds` (seconds) and `traffic` (per source; with `code`, that video's traffic) for
-  videos published ≤ 10 days before a sync. For older videos ask the Orchestrator for a resync; never assume the data.
+  videos published ≤ 10 days before a sync. For older videos ask the owner for a resync; never assume the data.
 - **CTR, thumbnail impressions and retention at 30 s are NOT available through yt-pipeline** (YouTube refuses them).
   Ask the owner in your chat for a YouTube Studio screenshot. Until it arrives, use proxies and say so in the evaluasi:
   - for CTR: the BROWSE + RELATED_VIDEO share of `traffic` and views/day vs the channel median;
@@ -84,7 +84,7 @@ title and the first 30 s decide growth.
   - Never change targets yourself; use `propose_targets` with an `alasan` that holds the supporting numbers and range.
     The owner decides.
   - Shorts have their own targets; never compare a Short's % watched with a long's. CTR cannot be a target.
-  - Use targets in evaluations only after the Orchestrator confirms the owner has filled them in.
+  - Use targets in evaluations only when `get_targets` shows the owner has filled them in.
 - Where notes go: one video → its `evaluasi` document (`put_document kind=evaluasi`); conclusions across videos →
   `write_report`. The `riset` document is for pre-production research only.
 - Failed hook patterns go in the video's evaluasi document and in the weekly report; read the last report before

@@ -24,8 +24,8 @@ package — it crashes on the Intel iGPU.
 ## Local TTS for English channels: tts-lokal
 
 Owner decision 24 Nov 2026: English narration is synthesised on the laptop with the shared tool `tts-lokal`
-(Chatterbox Turbo, voice cloning; fallback engine Qwen3-TTS). No Kaggle, no `GPU-MINTA`. Read its README first:
-`/mnt/data/Project/youtube/_bersama-youtube/tools/tts-lokal/README.md`.
+(Chatterbox Turbo, voice cloning; fallback engine Qwen3-TTS). No Kaggle, no approval needed. Read its README first:
+`manager/tools/tts-lokal/README.md` (repo root; `../manager/...` from a channel folder).
 
 ```bash
 tts-lokal <script>_tts.txt ... --ref <narrator.wav> --ref-teks <narrator.txt> --keluar <dir> --cek   # parse only
@@ -37,9 +37,8 @@ gpu-lock run "AC AC-0004 tts-lokal" -- tts-lokal <script>_tts.txt ... --ref <nar
 - ~1.0–1.3 s per second of audio including QC; the whole GPU is busy during the run. Lines over 40 words are split automatically.
 - The Perth watermark is off by default (owner decision); `--watermark` turns it on.
 - The first video per channel is a pilot: clips that still fail (out of memory, repeated QC failure) may go to Kaggle
-  with a normal `GPU-MINTA` for those clips only.
-- After the run, send the Orchestrator `TTS-LOKAL-SELESAI` (fields in `orchestrator-reporting.md`). Nothing is sent before it.
-  Never pitch-shift before the owner has listened.
+  after the owner approves a queue request for those clips only (`gpu-and-r2-requests.md`).
+- After the run, note it in the video's checklist; no report message. Never pitch-shift before the owner has listened.
 
 ## Choosing the Remotion renderer (per video)
 
@@ -66,4 +65,4 @@ Lower `--concurrency` if VRAM goes above ~3.5 GB.
 
 ## Not on the laptop
 
-TTS (VoxCPM2), generative video (Wan, LTX-Video, HunyuanVideo) and Flux need ≥ 8 GB → Kaggle, through `GPU-MINTA`.
+TTS (VoxCPM2), generative video (Wan, LTX-Video, HunyuanVideo) and Flux need ≥ 8 GB → Kaggle, after the owner approves the queue request.

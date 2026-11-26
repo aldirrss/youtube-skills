@@ -2,6 +2,12 @@
 
 These skills follow the RED → GREEN → REFACTOR approach for documentation.
 
+> **27 Nov 2026 (v0.9.0):** the Orchestrator session was retired by the owner. Scenarios below that mention the
+> Orchestrator, `GPU-MINTA`/`GPU-IZIN`, `TTS-LOKAL-SELESAI` or `R2-*` messages are historical. The new baseline
+> failure: channel sessions kept telling the owner a GPU run "must go through the Orchestrator (GPU-MINTA, wait for
+> GPU-IZIN)" after the owner had said there is none. GREEN: `references/gpu-and-r2-requests.md` and the "no
+> Orchestrator" paragraph in `producing-youtube-videos/SKILL.md`.
+
 ## RED: baseline failures observed in production (21–23 Nov 2026)
 
 Observed in real channel and Orchestrator sessions working without these skills:

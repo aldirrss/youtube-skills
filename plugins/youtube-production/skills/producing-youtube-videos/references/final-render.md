@@ -52,7 +52,7 @@ Every Short is produced once and rendered as **two cuts** (owner decision, 24 No
   posting packages for TikTok/Meta take `short_panjang`, and cleanup versions each cut separately. If your
   `create_upload` schema does not list `short_panjang`, the session holds an old copy of the tool list: reconnect
   `ytpipeline` (or restart the session) and reload the schema. Only if it is still missing, upload as `kind: "lain"`
-  with the `_panjang` file name (the web-app still routes it to TikTok/Meta) and say so in `R2-SELESAI`. A revision of either cut uses `replace_asset_id`
+  with the `_panjang` file name (the web-app still routes it to TikTok/Meta) and tell the owner. A revision of either cut uses `replace_asset_id`
   of that same cut.
 - Exact lengths may follow the content as long as they stay in range. Shorts already past Audio when a template
   changes are not redone unless the owner asks.
@@ -67,4 +67,4 @@ Other Short rules:
 
 ## Upload
 
-Follow `r2-assets.md`. Large finals need `R2-MINTA` first; a re-render of an existing final uses `replace_asset_id`.
+Follow `r2-assets.md`. Large finals need a `get_storage_usage` check first; a re-render of an existing final uses `replace_asset_id`.

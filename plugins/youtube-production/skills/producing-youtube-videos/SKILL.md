@@ -1,6 +1,6 @@
 ---
 name: producing-youtube-videos
-description: Use when a channel session works on a yt-pipeline video (long or Short) at any stage, especially Audio/TTS on Kaggle, Animation or Final render, uploading files to R2, or using the laptop GPU; when researching or scoring an idea or working the Riset stage, writing a hook, designing thumbnails, scheduling Shorts or reviewing D+2/D+7 analytics; also when a kernel is QUEUED, a gate is rejected, or the Orchestrator is unreachable.
+description: Use when a channel session works on a yt-pipeline video (long or Short) at any stage, especially Audio/TTS on Kaggle, Animation or Final render, uploading files to R2, or using the laptop GPU; when researching or scoring an idea or working the Riset stage, writing a hook, designing thumbnails, scheduling Shorts or reviewing D+2/D+7 analytics; also when a kernel is QUEUED, a gate is rejected, or a GPU run needs the owner's approval.
 ---
 
 # Producing YouTube Videos (channel sessions)
@@ -10,6 +10,11 @@ description: Use when a channel session works on a yt-pipeline video (long or Sh
 The yt-pipeline **template** says WHAT each stage delivers (documents, checklist, required tools, gate).
 This skill says HOW to do the shared technical parts so the channels stop repeating the same mistakes.
 Never copy template content into notes or code; read it fresh each time.
+
+**There is no Orchestrator session** (owner, 27 Nov 2026). GPU runs are approved by the owner in your own chat and
+recorded by you; R2 is handled by you. Any template, checklist or older note that says `GPU-MINTA`, `R2-MINTA`,
+`TTS-LOKAL-SELESAI` or "SendMessage to Orchestrator" is outdated: follow `references/gpu-and-r2-requests.md`.
+The shared folder is `manager/` at the repo root (formerly `_bersama-youtube/`, then `orchestrator/`).
 
 ## Start of every stage
 
@@ -21,16 +26,16 @@ Never copy template content into notes or code; read it fresh each time.
 
 | Rule | Why it exists |
 |---|---|
-| No `kaggle kernels push` before the Orchestrator replies `GPU-IZIN` | Kaggle allows 2 batch GPU sessions per account (QUEUED counts); 30 h/week shared by four channels |
-| Never call `log_gpu_session` / `update_gpu_session` yourself | Only the Orchestrator records GPU sessions; two writers double-count |
-| A QUEUED kernel is never re-pushed or cancelled by you — report it | Re-pushing created hidden duplicate versions that later ran and burned quota |
+| No `kaggle kernels push` before the owner says yes to your queue request in chat, and only while you hold `reserve_tool kaggle-zetrynai` | Kaggle allows 2 batch GPU sessions per account (QUEUED counts); 30 h/week shared by all channels |
+| Record every run you pushed yourself with `log_gpu_session` / `update_gpu_session`, once | There is no Orchestrator to log it; unlogged runs hide quota use |
+| A QUEUED kernel is never re-pushed or cancelled by you — tell the owner | Re-pushing created hidden duplicate versions that later ran and burned quota |
 | Every job on the NVIDIA GPU runs inside `gpu-lock run "<CH> <code> <job>" -- <cmd>` | Two jobs at once collided and corrupted benchmarks; VRAM is only 4 GB |
 | A new version of an existing file uploads with `replace_asset_id` | Uploading as a new asset stacks old versions in R2 |
 | Short files are named `…short-NN…` (e.g. `AC-0002_short-01.mp4`) | The web-app matches `short-NN`; `short01` locks the "Upload to YouTube" button |
-| Send `R2-MINTA` before any file > 100 MB or batch > 300 MB | R2 budget is shared; quota per channel |
+| Before any file > 100 MB or batch > 300 MB, check `get_storage_usage`; ask the owner only if the quota would be exceeded | R2 budget is shared; quota per channel |
 | Every Short has two cuts: 30–45 s for YouTube, 60–75 s (Zeva ≤ 90 s) for TikTok/Reels, one TTS run | TikTok pays only for videos over 1 min; YouTube Shorts perform best short |
 | No pitch shift before the owner has listened to the original clip | Shifted clips sounded robotic to the owner; six were reverted to the Kaggle originals |
-| Uji / audisi runs need the owner's words in your chat; quote them in `GPU-MINTA` | Tests are the owner's decision, not the channel's |
+| Uji / audisi runs need the owner's words in your chat; quote them in the queue request | Tests are the owner's decision, not the channel's |
 | One Short every day; on a long's day its first Short goes out after the long is public, "Related video" = that long | Only 3 % of long views came from Shorts; `emptyDays` does not flag long days without a Short |
 | Short hook: strongest image at frame 0, open question unanswered in 0–3 s, 3 variants for the owner | 4 in 10 viewers swiped away |
 | Three different thumbnail concepts, ≤ 4 words, readable at 168×94, compared with the top 3 competitors at Izin unggah | Long CTR was 2.8 %; 87 % of long views come from recommendations and browse |
@@ -41,7 +46,7 @@ Never copy template content into notes or code; read it fresh each time.
 
 | You are about to… | Read |
 |---|---|
-| send any message to the Orchestrator | `references/orchestrator-reporting.md` |
+| ask for a Kaggle GPU run, or upload something large to R2 | `references/gpu-and-r2-requests.md` |
 | run TTS for an English channel (local `tts-lokal`) | `references/local-gpu.md` |
 | run TTS (or any notebook) on Kaggle | `references/kaggle-tts.md` |
 | render, encode, transcribe or generate images on the laptop | `references/local-gpu.md` |
@@ -53,19 +58,20 @@ Never copy template content into notes or code; read it fresh each time.
 ## Red flags — stop and re-read the hard rules
 
 - "The kernel has been queued for an hour, I'll push again." → report, don't push.
-- "Orchestrator hasn't answered, the deadline is close, I'll push anyway." → ask the owner in your own chat; only the owner's explicit words override.
-- "A slot looks free, I'll push now without telling anyone." → only with a `GPU-IZIN` that covers it; send `GPU-MULAI`.
+- "The owner hasn't answered, the deadline is close, I'll push anyway." → no push without the owner's yes in your chat.
+- "A slot looks free, I'll push now without telling anyone." → only with the owner's yes for that batch and `reserve_tool kaggle-zetrynai`.
+- "I'll route this through the Orchestrator / send GPU-MINTA." → there is no Orchestrator; ask the owner directly.
 - "The pitch drifted a little, I'll fix it with rubberband first." → deliver the original, name the clips, let the owner decide.
 - "This Short is only 35 s of content, one cut is enough." → write the 60–75 s long cut; the short cut comes from it.
 - "It's a small render, no need for gpu-lock." → every NVIDIA job uses the lock.
-- "I'll upload v2 as a new asset to keep v1 for comparison." → replace; say in `R2-SELESAI` if the owner wants v1 kept.
+- "I'll upload v2 as a new asset to keep v1 for comparison." → replace, unless the owner asked to keep v1.
 - "The keyword score is high, that's enough research." → read outliers, the related sidebar and our own traffic first.
 - "No outlier found, but I like the topic." → permintaan ≤ 4; defer it or change the angle.
 - "`emptyDays` is empty, so every day has a Short." → check each long day; the long hides the gap.
 - "The Short answers everything, it's more satisfying." → leave one question for the long and name it at the end.
 - "Thumbnail B is A in another colour." → three different ideas, or it is one thumbnail.
 - "The schedule is already approved, I'll just move the Shorts to fill the long day." → report it; the owner decides.
-- "The template says log_gpu_session is required." → outdated template text; the Orchestrator logs. Report it.
+- "The template says SendMessage to the Orchestrator is required." → outdated template text; report it in `tools_used` honestly and follow `gpu-and-r2-requests.md`.
 
 ## Common mistakes
 

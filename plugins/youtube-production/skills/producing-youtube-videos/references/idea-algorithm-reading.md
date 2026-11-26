@@ -1,7 +1,7 @@
 # Reading the algorithm during idea research
 
 Owner decision, 24 Nov 2026. The full rule (Indonesian) is
-`/mnt/data/Project/youtube/_bersama-youtube/ATURAN-RISET-ALGORITMA.md`. If this summary and the full rule disagree, the
+`manager/ATURAN-RISET-ALGORITMA.md` (repo root; `../manager/...` from a channel folder). If this summary and the full rule disagree, the
 full rule wins.
 
 YouTube does not publish its algorithm. What you can read are its **traces**:

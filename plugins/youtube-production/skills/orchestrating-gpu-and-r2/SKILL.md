@@ -1,9 +1,13 @@
 ---
 name: orchestrating-gpu-and-r2
-description: Use when acting as the Orchestrator session for the YouTube channels and a channel message arrives (HALO, GPU-MINTA, GPU-MULAI, GPU-SELESAI, R2-MINTA, R2-SELESAI, R2-IZIN-UNGGAH), when a Kaggle kernel is running or queued, when the session restarts with GPU sessions still open, or when the owner asks for GPU or R2 status.
+description: RETIRED 27 Nov 2026 — there is no Orchestrator session any more. Do not use this skill and do not act as an Orchestrator. Channel sessions ask the owner for GPU runs and handle R2 themselves (producing-youtube-videos → references/gpu-and-r2-requests.md). Kept only as a historical record.
 ---
 
-# Orchestrating GPU and R2
+# Orchestrating GPU and R2 (retired)
+
+> **Retired by the owner on 27 Nov 2026:** "disini tidak ada orchestrator … kalo mau pengajuan gpu tinggal minta
+> antrean nanti saya izinkan". Nothing below applies any more. Channel sessions follow
+> `producing-youtube-videos/references/gpu-and-r2-requests.md`. The shared folder is now `manager/`.
 
 ## Overview
 
